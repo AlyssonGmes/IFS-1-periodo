@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Questao1 {
+
+    public static void main(String[] args) {
+        //1. Vale(0.5) Faça um Programa que leia 50 números inteiros e armazene-os num vetor.
+        // Armazene os números pares no vetor PAR e os números IMPARES no vetor impar.
+        // Imprima os três vetores.
+        final int limite_max = 50;
+        int vetor_geral[], vetor_par[], vetor_impar[], auxPar = 0, auxImp = 0;
+        vetor_geral = new int[limite_max];
+        vetor_par = new int[limite_max];
+        vetor_impar = new int[limite_max];
+
+        Scanner input = new Scanner(System.in);
+
+        for(int n = 0; n < limite_max; n++){
+            System.out.print("Insira um número inteiro: ");
+            vetor_geral[n] = input.nextInt();
+        }
+
+        for(int n = 0; n < limite_max; n++){
+            if(vetor_geral[n] %2 == 0){
+                vetor_par[auxPar] = vetor_geral[n];
+                auxPar++;
+            }else{
+                vetor_impar[auxImp] = vetor_geral[n];
+                auxImp++;
+            }
+        }
+
+        System.out.println("Vetor Geral");
+        for(int n = 0; n < limite_max; n++){
+            System.out.println(vetor_geral[n]);
+        }
+        System.out.println();
+
+        System.out.println("Vetor Par");
+        for(int n = 0; n < auxPar; n++){
+            System.out.println(vetor_par[n]);
+        }
+
+        System.out.println();
+
+        System.out.println("Vetor Impar");
+        for(int n = 0; n < auxImp; n++){
+            System.out.println(vetor_impar[n]);
+        }
+    }
+}
