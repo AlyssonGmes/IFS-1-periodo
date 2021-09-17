@@ -1,0 +1,31 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+import static java.lang.Character.toLowerCase;
+
+public class Questao1 {
+    public static void main(String[] args){
+        float h_altura;
+        char sexo;
+
+      //  Para homens: (72.7*h) - 58
+       // Para mulheres: (62.1*h) - 44.7
+
+        DecimalFormat df = new DecimalFormat(".0");
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite sua altura: ");
+        h_altura = input.nextFloat();
+
+        System.out.print("Digite seu sexo: (M/F)? ");
+        sexo = input.next().charAt(0);
+
+        if(toLowerCase(sexo)=='m'){
+            System.out.println("Seu peso ideal: "+ df.format(((72.7*h_altura)-58)));
+        }else if(toLowerCase(sexo)=='f'){
+            System.out.println("Seu peso ideal: "+ df.format(((62.1*h_altura)-44.7)));
+        }else{
+            System.out.println("Voce digitou o sexo errado...");
+        }
+
+    }
+}
