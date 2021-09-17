@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Questao01 {
+    public static void main(String[] args) {
+        double soma = 0, contador = 0, n;
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Digite 20 números");
+
+        do{
+            n = input.nextDouble();
+            soma += n;
+            contador++;
+        }while(contador < 20);
+
+        System.out.println("Soma: "+soma);
+        System.out.println("Media: "+(soma/contador));
+
+
+
+    }
+}
