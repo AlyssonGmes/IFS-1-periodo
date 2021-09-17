@@ -1,0 +1,27 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class SalarioMensal {
+    public static void main(String[] args) {
+
+        double pagamentoHora, salarioMensal;
+        int horasTrablhadas; //horas inteiras
+
+        Scanner input = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat(".00");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMMM");
+
+        System.out.print("Quanto você ganha por hora trabalhada? ");
+        pagamentoHora = input.nextDouble();
+
+        System.out.print("Quantas horas trabalhou neste mês? ");
+        horasTrablhadas = input.nextInt();
+
+        salarioMensal = pagamentoHora*horasTrablhadas;
+
+        System.out.println("Salário Total em "+dtf.format(LocalDate.now())+": R$ "+df.format(salarioMensal));
+    }
+}
