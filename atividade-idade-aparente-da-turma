@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Questao04 {
+    public static void main(String[] args) {
+        int num, soma = 0, qtd_turma = -1;
+        float media;
+
+        Scanner input = new Scanner(System.in);
+
+        do {
+            System.out.print("Quantas pessoas há na turma? ");
+            qtd_turma = input.nextInt();
+
+            if(qtd_turma<0){
+                System.out.println("Pelo menos digite um numero valido...");
+            }
+
+            if(qtd_turma==0){
+                System.out.println("Você digitou zero. Nao ha ninguem em sua turma.");
+                return;
+            }
+
+        }while(qtd_turma<0);
+
+        System.out.println("Agora insira a idade de cada uma:");
+        for(int i = 0; i < qtd_turma; i++){
+            num = input.nextInt();
+
+            //irei considerar zero, nascer agora tambem eh idade
+            if(num<0){
+                do{
+                    System.out.println("Voce digitou uma idade negativa... tente novamente");
+                    num = input.nextInt();
+                }while(num<0);
+            }
+
+            soma += num;
+        }
+
+        media = (float) (soma/qtd_turma);
+
+        if(media>=0 && media<=25){
+            System.out.println("A turma eh jovem");
+        }
+        if(media>25 && media <=60){
+            System.out.println("A turma eh adulta");
+        }
+
+        if(media>60){
+            System.out.println("A turma eh idosa");
+        }
+    }
+}
