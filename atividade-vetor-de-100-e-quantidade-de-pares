@@ -1,0 +1,38 @@
+import java.util.Random;
+
+public class Questao1 {
+    public static void main(String[] args) {
+       //Implemente um programa em Java que gere aleatoriamente valores para um vetor de 100 posições de memória.
+        // Ao final, o seu programa deve imprimir a quantidade de elementos pares que foram gerados para este vetor.
+        // Imprima também os valores gerados para o vetor.
+
+        int vetor[] = new int[100];
+        int soma_pares = 0;
+        int aux = 0; //utilizada pra que os valores randômicos sejam os mesmos nas atribuições e pra imprimir colunas
+
+        Random rnd = new Random();
+
+        for(int i = 0; i< vetor.length; i++){
+            aux = rnd.nextInt(100);
+            vetor[i] = aux;
+            if(aux%2 == 0){
+                //soma dos pares para imprimir antes de exibir o vetor
+                soma_pares++;
+            }
+        }
+
+        System.out.println("Foram "+soma_pares+" números pares.");
+
+        aux = 0;
+        //variável auxiliar zerada
+
+        for (int n: vetor){
+            System.out.printf("%02d ", n);
+            aux++;
+            if(aux%20==0){
+                //usei isso pra imprimir outras colunas, pra que coubesse tudo no topo do terminal
+                System.out.println();
+            }
+        }
+    }
+}
