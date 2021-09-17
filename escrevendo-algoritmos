@@ -1,0 +1,39 @@
+Algoritmo da compra de comidas por aplicativos:
+1. Pegue um celular que possua conexão com a internet;
+2. Verifique se há algum aplicativo de entrega de comidas instalado:
+2.1 - Caso não, instale um aplicativo de entrega que possua
+uma boa reputação;
+3. Abra esse aplicativo;
+4. Se não estiver logado em uma conta, tome como base esses critérios:
+4.1 Se você não possui conta, realize o seu cadastro:
+4.1.1 Feito o cadastro, faça login;
+4.2 Se possui conta, faça login;
+5. Selecione um estabelecimento do seu gosto (analisando a pontução, o
+valor do frete, a variedade, a qualidade e o preço dos produtos);
+6. Adicione a quantidade de itens desejados ao carrinho de compras:
+6.1 - A cada inserção de um novo item, verifique se você ainda
+tem saldo suficiente para pagar a compra total dos produtos e do
+serviço de entrega, seja em dinheiro vivo, a crédito ou a débito, só
+então prossiga realizando as compras que desejar;
+6.2 - Caso haja extrapolado o limite de saldo, retire itens de
+menor importância até obter saldo suficiente.
+7. Se você já tiver adicionado todos os itens que deseja ao carrinho e
+tiver saldo suficiente para realizar o pedido:
+7.1 - Informe o endereço de entrega;
+7.2 - Selecione os métodos de pagamento;
+7.3 - Confirme a entrega;
+8. Espere o pedido ser entregue;
+9. Se o pedido demorar muito, faça uma reclamação;
+10. Se o pedido for cancelado, tente realizar outro pedido em outro
+estabelecimento;
+11. Se o pedido for entregue, pegue as compras e realize o pagamento;
+
+Algoritmo do cálculo da média ponderada:
+1. Sabendo que duas provas possuem pesos diferentes, respectivamente,
+3 e 7;
+2. Obtenha a nota da primeira prova;
+3. Obtenha a nota da segunda prova;
+4. Multiplique a primeira prova pelo primeiro peso, que é 3;
+5. Multiplique a segunda prova pelo segundo peso, que é 7;
+6. Some os produtos das multiplicações;
+7. Agora divida a soma dos produtos pela soma dos pesos (3 e 7);
