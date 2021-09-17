@@ -1,0 +1,31 @@
+import java.util.Random;
+
+public class Questao2 {
+    public static void main(String[] args) {
+        //2. (Vale 0,5) Leia uma matriz 6 x 6,
+        // conte e escreva quantos valores maiores que 10 ela possui.
+
+        int soma = 0;
+        int matriz[][] = new int[6][6];
+
+        Random rnd = new Random();
+
+        for(int i = 0; i<6; i++) {
+            for (int k = 0; k < 6; k++) {
+                matriz[i][k] = rnd.nextInt(100);
+            }
+        }
+
+        for(int i = 0; i<6; i++) {
+            for (int k = 0; k < 6; k++) {
+                System.out.printf("%02d ", matriz[i][k]);
+                if(matriz[i][k]>10){
+                    soma++;
+                }
+            }
+            System.out.printf("\n");
+        }
+        System.out.println("Quantidade de números maiores que 10 é: "+soma);
+
+    }
+}
