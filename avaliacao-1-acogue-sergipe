@@ -1,0 +1,161 @@
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Questao1 {
+    public static void main(String[] args) {
+        String[] respostas_preparo = {"Beleza!", "Vou preparar!", "Vou deixar no ponto!", "Só um instante.", "Só um minutinho!", "Pode confiar! Essa é boa."};
+        byte opcao, metodo_pagamento;
+        float kg_carne, valor_final = 0, desconto, preco_alcatra = 35.9f, preco_file_mignon = 34.9f, preco_picanha = 45.9f, valor_promo = 0;
+        float codigoCarne[] = {preco_file_mignon, preco_alcatra, preco_picanha};
+
+        String nome_item = "", wonPromotion = "00%";
+
+        Scanner input = new Scanner(System.in);
+
+        //utilizado pra variar as respostas do açogueiro
+        Random randomly = new Random();
+
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols(new Locale("pt", "Brazil"));
+        dfs.setDecimalSeparator(',');
+        dfs.setGroupingSeparator('.');
+
+        DecimalFormat df = new DecimalFormat("###,##0.00", dfs);
+
+        //data
+        LocalDateTime localDate = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy    HH:mm:ss");
+        String data_hora = localDate.format(dtf);
+
+        //menu principal
+        System.out.println("╔════════════════════╦═══════════════════════════╦════════════════════╗");
+        System.out.println("║▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒║       Açogue Sergipe      ║▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒║");
+        System.out.println("╠════════════════════╬═══════════════════════════╬════════════════════╣");
+        System.out.println("║      carnes                 Até 5 Kg               Acima de 5 Kg    ║"           );
+        System.out.println("║   1 Filé Mignon          R$ 34,90 por Kg          R$ 30,80 por Kg   ║");
+        System.out.println("║   2 Alcatra              R$ 35,90 por Kg          R$ 32,80 por Kg   ║");
+        System.out.println("║   3 Picanha              R$ 45,90 por Kg          R$ 42,80 por Kg   ║");
+        System.out.println("╚════════════════════╩═══════════════════════════╩════════════════════╝");
+
+        System.out.println("- Bom dia, chefe! Qual dessas vai querer levar na promoção? ");
+        opcao = input.nextByte();
+        if(opcao<1 || opcao>3) {
+            System.out.println("Não entendi...");
+            return;
+        }
+
+        System.out.println("- Quantos Kg vai levar? ");
+        kg_carne = input.nextFloat();
+        if(kg_carne<=0){
+            System.out.println("Você não quer carne então...");
+            return;
+        }
+
+        switch (opcao){
+            case 1:
+                System.out.println("\n- "+respostas_preparo[randomly.nextInt(6)]+"\n");
+                nome_item = "FILÉ MIGNON";
+
+                if(kg_carne<6){
+                    valor_final = kg_carne*(preco_file_mignon);
+                    valor_promo = codigoCarne[opcao-1];
+
+                }else{
+                    valor_final = kg_carne*(preco_file_mignon-4.1f);
+                    valor_promo = codigoCarne[opcao-1]-4.1f;
+                }
+                break;
+            case 2:
+                System.out.println("\n- "+respostas_preparo[randomly.nextInt(6)]+"\n");
+                nome_item = "ALCATRA";
+                if(kg_carne<6){
+                    valor_final = kg_carne*preco_alcatra;
+                    valor_promo = codigoCarne[opcao-1];
+                }else{
+                    valor_final = kg_carne*(preco_alcatra-3.1f);
+                    valor_promo = codigoCarne[opcao-1]-3.1f;
+                }
+                break;
+            case 3:
+                System.out.println("\n- "+respostas_preparo[randomly.nextInt(6)]+"\n");
+                nome_item = "PICANHA";
+                if(kg_carne<6){
+                    valor_final = kg_carne*(preco_picanha);
+                    valor_promo = codigoCarne[opcao-1];
+                }else{
+                    valor_final = kg_carne*(preco_picanha-3.1f);
+                    valor_promo = codigoCarne[opcao-1]-3.1f;
+                }
+                break;
+        }
+
+        //menu de pagamento
+        System.out.println("Você quer pagar à vista ou no cartão?");
+        System.out.println("\t\t╔════════════════════╗");
+        System.out.println("\t\t║   1 - à vista      ║");
+        System.out.println("\t\t║   2 - a prazo      ║");
+        System.out.println("\t\t╚════════════════════╝");
+
+        metodo_pagamento = input.nextByte();
+        System.out.println("\n");
+
+        if(metodo_pagamento!= 1 && metodo_pagamento !=2) {
+            System.out.println("Não entendi...");
+            return;
+        }
+
+        if(metodo_pagamento == 1){
+            //desconto de 5% sobre o total da compra
+            desconto = ((0.05f)*valor_final);
+            valor_final -= desconto;
+            wonPromotion = "5% (à vista)";
+        }else{
+            desconto = 0.0f;
+            wonPromotion = "0% (a prazo)";
+        }
+
+        //conteúdo do cupom
+        String strEspacos = "";
+        String cupom_linhas[] = {"║ "+data_hora,
+                                 "║       C U P O M   F I S C A L",
+                                 "║ ITEM       CODIGO",
+                                 "║ "+nome_item+"    "+opcao,
+                                 "║             QTD.   VL UNIT (R$)",
+                                 "║             "+kg_carne+" Kg    "+df.format(valor_promo),
+                                 "║ ",
+                                 "║ desc.  "+wonPromotion+"   "+df.format(desconto),
+                                 "║ --------------------------------",
+                                 "║ TOTAL R$            "+ df.format(valor_final),
+                                 "║ BS1 Q1.0",
+                                 "║           VOLTE SEMPRE!"
+
+        };
+
+
+        /*
+        professora, tive problemas com precisão. Pensei em usar double,
+        mas iria consumir mais memória, e talvez desse o mesmo problema. Pensei em utilizar BigDecimal,
+        , mas não entendi bem a questão de ser uma String como parâmetro
+
+         então esse açogue tá racionalizando, só vende abaixo de mil kgs por cliente hehe
+         */
+
+
+        //caixa com largura automática e conteúdo
+        System.out.println("╔═══════════════════════════════════╗");
+        for(int b = 0; b < cupom_linhas.length; b++) {
+            System.out.print(cupom_linhas[b]);
+            for (int i = 0; i < 36-cupom_linhas[b].length(); i++) {
+                strEspacos += ' ';
+            }
+            System.out.println(strEspacos + "║");
+            strEspacos = "";
+        }
+
+        System.out.println("╚═══════════════════════════════════╝");
+    }
+}
