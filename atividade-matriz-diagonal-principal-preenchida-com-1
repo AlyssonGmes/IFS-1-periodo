@@ -1,0 +1,24 @@
+public class Questao3 {
+    public static void main(String[] args) {
+        //3. (Vale 0,5) Declare uma matriz 4 x 4.
+        //Preencha com 1 a diagonal principal e com 0 os demais elementos.
+        // Escreva ao final a matriz obtida.
+
+        int matriz[][] = new int[4][4];
+
+        for (int itLinhas = 0; itLinhas < 4; itLinhas++) {
+            for (int itColunas = 0; itColunas < 4; itColunas++) {
+                if(itLinhas==itColunas){
+                    matriz[itColunas][itLinhas] = 1;
+                }
+            }
+        }
+
+        for (int itColunas = 0; itColunas < 4; itColunas++) {
+            for (int itLinhas = 0; itLinhas < 4; itLinhas++) {
+                System.out.print(matriz[itLinhas][itColunas]+" ");
+            }
+            System.out.printf("%n");
+        }
+    }
+}
