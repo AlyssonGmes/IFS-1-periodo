@@ -1,0 +1,33 @@
+import java.util.Random;
+
+public class Questao3 {
+    public static void main(String[] args) {
+        //3. (VALE 1,0) Implemente um programa em Java que crie uma matriz de inteiros de dimensão 5x5
+        // e retorna a média de todos os elementos da matriz.
+        // OBS: Você pode criar os elementos aleatoriamente com o Random.
+
+
+        int matriz[][] = new int[5][5];
+        float soma = 0.0f;
+        int aux;
+
+        Random rnd = new Random();
+
+        for(int itColunas = 0; itColunas <5 ; itColunas++){
+            for(int itLinhas = 0; itLinhas <5; itLinhas++){
+                aux = rnd.nextInt(100);
+                matriz[itLinhas][itColunas] = aux;
+                soma += aux;
+            }
+        }
+
+        for(int itColunas = 0; itColunas <5 ; itColunas++) {
+            for (int itLinhas = 0; itLinhas < 5; itLinhas++) {
+                System.out.printf("%02d ", matriz[itLinhas][itColunas]);
+            }
+            System.out.println();
+        }
+
+        System.out.println("Média de todos os elementos: "+soma/25);
+    }
+}
