@@ -1,0 +1,33 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Questao3 {
+    public static void main(String[] args) {
+        float compras_total;
+        byte codId_consumidor;
+
+        DecimalFormat df = new DecimalFormat(".00");
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite o valor total da compra: ");
+        compras_total = input.nextFloat();
+
+        System.out.println("Escolha uma opcao: \n 1 - cliente comum \n 2 - funcionario \n 3 - cliente premium");
+        codId_consumidor = input.nextByte();
+
+        switch(codId_consumidor){
+            case 1:
+                System.out.println("Valor final da compra: "+ df.format(compras_total));
+                break;
+            case 2:
+                System.out.println("Valor final da compra: "+ df.format(compras_total-(compras_total*0.15)));
+                break;
+            case 3:
+                System.out.println("Valor final da compra: "+ df.format(compras_total-(compras_total*0.10)));
+                break;
+            default:
+                System.out.println("Voce inseriu uma opcao incorreta...");
+        }
+
+    }
+}
