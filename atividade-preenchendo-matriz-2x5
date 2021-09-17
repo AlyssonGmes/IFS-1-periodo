@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Questao2 {
+
+    public static void main(String[] args) {
+        //2. (VALE 1,0) Implemente um programa em Java que leia 10 números pelo teclado
+        // e armazene-os em uma matriz de dimensão 2x5.
+
+        int matriz[][] = new int[2][5];
+        int aux = 1;
+
+        Scanner input = new Scanner(System.in);
+
+        for(int itLinhas = 0; itLinhas<2; itLinhas++){
+            for(int itColunas = 0; itColunas < 5; itColunas++){
+                System.out.printf("[%d/10] Digite um número: ", aux);
+                matriz[itLinhas][itColunas] = input.nextInt();
+                aux++;
+            }
+        }
+
+        for(int itLinhas = 0; itLinhas<2; itLinhas++){
+            for(int itColunas = 0; itColunas < 5; itColunas++){
+                System.out.printf("%02d ", matriz[itLinhas][itColunas]);
+            }
+            System.out.println();
+        }
+    }
+
+}
