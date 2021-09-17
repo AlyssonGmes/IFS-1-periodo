@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class Questao2 {
+    public static void main(String[] args) {
+        //Implemente um programa em Java que leia dois vetores de 10 posições de memória,
+        // um vetor deve armazenar os nomes dos alunos e outro vetor deve armazenar a média final destes alunos.
+        // Mostre, ao final:
+        //A) O nome do aluno com maior média (e sua média);
+        //B) A situação  final  de  cada aluno (APROVADO ou REPROVADO) considerando que a nota a ser alcançada é 6 (seis).
+
+        String []nomes_alunos = new String[10];
+        float []medias_alunos = new float[10];
+        int []maiores_medias = new int[10];
+        float maior_media = 0;
+        int aux = 0;
+
+        Scanner scn = new Scanner(System.in);
+
+        for(int n = 0; n < nomes_alunos.length; n++){
+            System.out.print("Digite o nome do "+(n+1)+"º aluno: ");
+            nomes_alunos[n] = scn.nextLine();
+            System.out.print("Insira a sua média final: ");
+            medias_alunos[n] = scn.nextFloat();
+            scn.nextLine();
+            System.out.println();
+
+            if(medias_alunos[n]>maior_media){
+                maior_media = medias_alunos[n];
+            }
+        }
+
+        for(int i = 0; i< medias_alunos.length; i++){
+            if(medias_alunos[i]==maior_media){
+                maiores_medias[aux] = i;
+                aux++;
+            }
+        }
+
+        System.out.printf("\n");
+
+        System.out.printf("A maior média foi de %.2f\n", maior_media);
+        for(int i = 0; i < aux; i++){
+            System.out.println(nomes_alunos[maiores_medias[i]]);
+        }
+
+        System.out.printf("\n\n");
+
+
+        System.out.println("Situação final de cada aluno:");
+       for(int i = 0; i<nomes_alunos.length; i++){
+           System.out.printf("%2d - %s \tmédia final: %.2f ", i+1, nomes_alunos[i], medias_alunos[i]);
+           if(medias_alunos[i]>=6){
+               System.out.println("[sit: APROVADO]");
+           }else{
+               System.out.println("[sit: REPROVADO]");
+           }
+       }
+
+
+    }
+}
