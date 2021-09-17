@@ -1,0 +1,38 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+import static java.lang.Character.toLowerCase;
+public class Questao4 {
+    public static void main(String[] args) {
+        char opcao;
+        int num_nascimentos, num_habitantes, num_obitos;
+        float natalidade, mortalidade; //poderia usar so 1, mas diminuiria a legibilidade.
+
+        DecimalFormat df = new DecimalFormat(".0");
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Voce quer calcular a natalidade ou a mortalidade: (N/M)? ");
+        opcao = input.next().charAt(0);
+
+        if(toLowerCase(opcao)=='n'){
+            System.out.print("Digite o numero de criancas nascidas: ");
+            num_nascimentos = input.nextInt();
+            System.out.print("Digite o numero de habitantes: ");
+            num_habitantes = input.nextInt();
+
+            natalidade = (num_nascimentos*1000)/num_habitantes;
+
+            System.out.println("Taxa de natalidade: "+ df.format(natalidade));
+        }else if(toLowerCase(opcao)== 'm'){
+            System.out.print("Digite o numero de obitos: ");
+            num_obitos = input.nextInt();
+            System.out.print("Digite o numero de habitantes: ");
+            num_habitantes = input.nextInt();
+
+            mortalidade = (num_obitos*1000)/num_habitantes;
+
+            System.out.println("Taxa de mortalidade: "+df.format(mortalidade));
+        }else{
+            System.out.println("Voce inseriu uma opcao incorreta...");
+        }
+    }
+}
