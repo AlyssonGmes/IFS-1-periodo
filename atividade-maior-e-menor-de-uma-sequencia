@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Questao03 {
+    public static void main(String[] args) {
+        int num, menor, maior, soma = 0, conjunto_max = -1;
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite quantos numeros voce quer inserir: ");
+        conjunto_max = input.nextInt();
+
+        if(conjunto_max<0){
+            do {
+                System.out.println("Pelo menos digite um numero valido...");
+                conjunto_max = input.nextInt();
+            }while(conjunto_max<0);
+        }
+
+        if(conjunto_max==0){
+            System.out.println("Você digitou zero. O conjunto eh vazio.");
+            return;
+        }
+
+        System.out.println("Pronto. Agora insira uma sequencia de "+conjunto_max+" numero(s).");
+        System.out.println("Comece...");
+
+        num = input.nextInt();
+        menor = num;
+        maior = num;
+        soma = num;
+
+        for(int i = 1; i < conjunto_max; i ++){
+            num = input.nextInt();
+
+            if(num<=menor){
+                menor = num;
+            }
+
+            if(num>=maior){
+                maior = num;
+            }
+            soma += num;
+        }
+        if(menor!=maior) {
+            System.out.println("Menor: " + menor);
+            System.out.println("Maior: " + maior);
+        }else {
+            System.out.println("Não há diferença para comparar, então o maior e o menor será "+maior);
+        }
+        System.out.println("Soma: "+soma);
+
+
+
+    }
+}
