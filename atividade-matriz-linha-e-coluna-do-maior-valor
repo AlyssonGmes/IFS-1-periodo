@@ -1,0 +1,42 @@
+import java.util.Random;
+
+public class Questao4 {
+    public static void main(String[] args) {
+        //4. (Vale 0,5) Leia uma matriz 4 x 4,
+        // imprima a matriz e retorne a localização (linha e a coluna) do maior valor.
+
+        int maiorValor;
+        int matriz[][] = new int[4][4];
+        int endereco[] = new int[2];
+
+        Random rnd = new Random();
+
+        for (int itColunas = 0; itColunas < 4; itColunas++) {
+            for (int itLinhas = 0; itLinhas < 4; itLinhas++) {
+                matriz[itLinhas][itColunas] = rnd.nextInt(100);
+            }
+        }
+
+        maiorValor = matriz[0][0];
+        endereco[0] = 0;
+        endereco[1] = 0;
+
+        for (int itLinhas = 0; itLinhas < 4; itLinhas++) {
+            for (int itColunas = 0; itColunas < 4; itColunas++) {
+                System.out.printf("%02d ", matriz[itColunas][itLinhas]);
+
+                //registra maior endereço
+                if (matriz[itColunas][itLinhas]>maiorValor){
+                    maiorValor = matriz[itColunas][itLinhas];
+                    endereco[0] = itColunas+1;
+                    endereco[1] = itLinhas+1;
+                }
+            }
+            System.out.printf("%n");
+        }
+
+        System.out.println("O maior valor é "+maiorValor+", que está localizado na linha "+endereco[1]+", coluna "+endereco[0]);
+
+
+    }
+}
