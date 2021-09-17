@@ -1,0 +1,20 @@
+import java.text.DecimalFormat;
+import java.lang.Math;
+import java.util.Scanner;
+
+public class AreaQuadradoDobro {
+    public static void main(String[] args) {
+
+        double lado, areaDobrada;
+
+        Scanner entrada = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat(".00");
+
+        System.out.println("Defina um dos lados do quadrado" );
+        lado = entrada.nextDouble();
+
+        areaDobrada = (lado*lado)*2;
+
+        System.out.println("O dobro da área é "+df.format(areaDobrada));
+    }
+}
