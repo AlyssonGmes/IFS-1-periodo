@@ -1,0 +1,26 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Questao2 {
+    public static void main(String[] args) {
+        float produto_valor;
+        byte pagamento_forma;
+
+        Scanner input = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat(".00");
+
+        System.out.print("Qual o valor do produto? ");
+        produto_valor = input.nextFloat();
+
+        System.out.print("O pagamento sera a vista ou a prazo? (1/2)?  ");
+        pagamento_forma = input.nextByte();
+
+        if(pagamento_forma == 1){
+            System.out.println("O valor final do produto e: "+df.format(produto_valor-(produto_valor*0.10)));
+        }else if(pagamento_forma ==2) {
+            System.out.println("O valor final do produto e: " + df.format(produto_valor));
+        }else{
+            System.out.println("Voce digitou a forma de pagamento errada...");
+        }
+    }
+}
