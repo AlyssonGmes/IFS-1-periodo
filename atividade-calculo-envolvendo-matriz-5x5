@@ -1,0 +1,58 @@
+import java.util.Random;
+
+public class Questao3 {
+    public static void main(String[] args) {
+        //3. (Vale 1,5) Gere aleatoriamente uma matriz de ordem 5x5, imprima a matriz, e faça e mostre o:
+        //A) Cálculo da soma dos elementos da última coluna;
+        //B) Cálculo do produto dos elementos da primeira linha;
+        //C) Cálculo da soma de todos os elementos da matriz;
+        //D) Cálculo do produto da diagonal principal;
+
+        int[][]matriz = new int[5][5];
+        int soma_ultima_coluna = 0;
+        int produto_primeira_linha = 1;
+        int soma_geral = 0;
+        int produto_diagonal = 1;
+
+        Random rnd = new Random();
+
+        for(int itLinhas = 0; itLinhas<5; itLinhas++){
+            for(int itColunas = 0; itColunas<5; itColunas++){
+                matriz[itLinhas][itColunas] = rnd.nextInt(10);
+            }
+        }
+
+        for(int i = 0; i<5; i++){
+            soma_ultima_coluna += matriz[i][4];
+        }
+
+        for(int i = 0; i<5; i++){
+            produto_primeira_linha *= matriz[0][i];
+        }
+
+        for(int itLinhas = 0; itLinhas<5; itLinhas++){
+            for(int itColunas = 0; itColunas<5; itColunas++){
+                soma_geral += matriz[itLinhas][itColunas];
+                if (itLinhas==itColunas){
+                    produto_diagonal *= matriz[itLinhas][itColunas];
+                }
+            }
+        }
+
+        for(int itLinhas = 0; itLinhas<5; itLinhas++) {
+            for (int itColunas = 0; itColunas < 5; itColunas++) {
+                System.out.printf("%2d ", matriz[itLinhas][itColunas]);
+            }
+            System.out.println();
+        }
+        //A) Cálculo da soma dos elementos da última coluna;
+        //B) Cálculo do produto dos elementos da primeira linha;
+        //C) Cálculo da soma de todos os elementos da matriz;
+        //D) Cálculo do produto da diagonal principal;
+
+        System.out.println("Soma dos elementos da última coluna: "+soma_ultima_coluna);
+        System.out.println("Produto dos Elementos da primeira linha: "+produto_primeira_linha);
+        System.out.println("Soma de todos os elementos da matriz: "+soma_geral);
+        System.out.println("Produto da diagonal principal: "+produto_diagonal);
+    }
+}
