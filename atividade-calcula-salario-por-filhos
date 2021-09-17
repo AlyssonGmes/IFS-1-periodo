@@ -1,0 +1,56 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Questao2 {
+    public static void main(String[] args) {
+        boolean continuar_pesquisa = true;
+        float salario, media_salario = 0, media_filhos = 0, percSalario_RS100 = 0, decimalFloat = 0;
+        int filhos = 0, contador_total = 0, decimalInt = 0;
+
+        Scanner input = new Scanner(System.in);
+
+        do {
+            System.out.println("Cadastro Nº "+ (contador_total+1));
+
+            System.out.println("Qual é o seu salário?");
+            salario = input.nextFloat();
+            if(salario>=0){
+                media_salario += salario;
+                contador_total++;
+                if(salario<=100f) {
+                    //mesmo que a pessoa não receba salário ela será inclusa
+                    percSalario_RS100++;
+                }
+
+                System.out.println("Quantos filhos você tem?");
+                do {
+                    filhos = input.nextInt();
+                    if(filhos<0){
+                        System.out.println("O valor inserido é negativo. Tente novamente.\n");
+                        System.out.println("Quantos filhos você tem?");
+                    }else{
+                        media_filhos +=filhos;
+                    }
+                }while(filhos<0);
+            }else{
+                continuar_pesquisa = false;
+            }
+        }while(continuar_pesquisa);
+
+        //gambiarra pra deixar duas casas decimais após a vírgula
+        decimalInt = (int)((media_salario/contador_total)*100);
+        decimalFloat = (float)(decimalInt)/100;
+        System.out.println("\n\nSalário médio: R$ "+ decimalFloat);
+
+        decimalInt = (int)((media_filhos/contador_total)*100);
+        decimalFloat = (float) decimalInt/100;
+        System.out.println("Média do número de filhos: "+ decimalFloat);
+
+        decimalInt = (int) (((percSalario_RS100*100)/contador_total)*100);
+        decimalFloat = (float) decimalInt/100;
+        System.out.println("Percentual de pessoas com salário de até cem reais: "+decimalFloat+"%"); //regrinha de três
+
+
+
+    }
+}
